@@ -90,11 +90,41 @@ blockquote.callout {
   background: color-mix(in srgb, var(--primary) 11%, transparent);
 }
 
+blockquote.callout.callout-note {
+  border-left-color: #3b82f6;
+}
+
+blockquote.callout.callout-tip {
+  border-left-color: #16a34a;
+  background: color-mix(in srgb, #16a34a 11%, transparent);
+}
+
+blockquote.callout.callout-warning {
+  border-left-color: #d97706;
+  background: color-mix(in srgb, #d97706 10%, transparent);
+}
+
 blockquote.callout .callout-title {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-weight: 700;
   margin-bottom: 0.45em;
   color: var(--primary);
+}
+
+blockquote.callout .callout-title::before {
+  content: "📝";
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+blockquote.callout.callout-tip .callout-title::before {
+  content: "💡";
+}
+
+blockquote.callout.callout-warning .callout-title::before {
+  content: "⚠️";
 }
 
 code, pre {
@@ -151,6 +181,26 @@ ul, ol { padding-left: 1.4em; }
   color: var(--muted);
   font-size: 0.95rem;
   margin-bottom: 1.8em;
+}
+
+.conclusion-box {
+  margin-top: 0.8em;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, var(--border));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 12%, transparent),
+    color-mix(in srgb, #f59e0b 8%, transparent)
+  );
+}
+
+.conclusion-box p:first-child {
+  margin-top: 0.2em;
+}
+
+.conclusion-box p:last-child {
+  margin-bottom: 0.2em;
 }
 
 footer.page-foot {

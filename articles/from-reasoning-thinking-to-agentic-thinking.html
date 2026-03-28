@@ -40,21 +40,21 @@ reasoning 模型。</p>
 思維</strong>：如何讓模型花更多推理算力、如何給更強的
 reward、如何控制或曝光這段額外推理。下一步是什麼？我認為答案是
 <strong>agentic
-思維</strong>：為了「行動」而思考，與環境互動，並基於世界回饋持續修正計畫。</p>
-<blockquote>
-<p>[!note] 註記 <strong>Reasoning</strong>
+思維</strong>：<mark>為了「行動」而思考，與環境互動，並基於世界回饋持續修正計畫。</mark></p>
+<blockquote class="callout callout-note">
+<p><span class="callout-title">重點註記</span><br /><strong>Reasoning</strong>
 重點在「想得更深」，<strong>Agentic</strong>
 重點在「想了要能持續有效行動」。</p>
 </blockquote>
 <hr />
 <h2 id="1-o1-與-r1-的崛起教會我們什麼">1. o1 與 R1
 的崛起教會我們什麼</h2>
-<p>第一波 reasoning 模型告訴我們：若要在語言模型中擴展
-RL，就需要<strong>可驗證、穩定、可擴展的回饋訊號</strong>。數學、程式、邏輯等可驗證領域變成核心，因為這些場景的
+<p><mark>第一波 reasoning 模型告訴我們：若要在語言模型中擴展
+RL，就需要</mark><strong>可驗證、穩定、可擴展的回饋訊號</strong>。數學、程式、邏輯等可驗證領域變成核心，因為這些場景的
 reward 強度遠高於泛用偏好監督。RL
 能優化「正確性」而非「看起來合理」。<strong>基礎設施（infra）變得關鍵。</strong></p>
-<p>一旦模型被訓練成能走長推理軌跡，RL 就不再是 SFT
-的小補丁，而是<strong>系統工程問題</strong>：需要大規模
+<p>一旦模型被訓練成能走長推理軌跡，<mark>RL 就不再是 SFT
+的小補丁，而是</mark><strong>系統工程問題</strong>：需要大規模
 rollouts、吞吐量高的驗證、穩定的 policy 更新、有效率的採樣。Reasoning
 模型的出現，不只是一個建模故事，更是一個 <strong>infra 故事</strong>。o1
 與 R1 清楚指出：<strong>後訓練 scaling 才是下一個重點</strong>。</p>
@@ -69,7 +69,7 @@ instruct，提供可調 reasoning effort（低 / 中 /
 <strong>資料</strong>。</p>
 <p>人們談「合併」時，往往只想到 model 端：同一 checkpoint
 能否支援兩種模式、是否能在 chat template 切換、serving
-是否能提供開關。但更深層的問題是：<strong>兩種模式的資料分佈與行為目標大不同</strong>。</p>
+是否能提供開關。但更深層的問題是：<mark><strong>兩種模式的資料分佈與行為目標大不同</strong></mark>。</p>
 <ul>
 <li><strong>Instruct
 模型</strong>獎勵的是：直接、簡潔、格式合規、低延遲，適合大量重複任務（改寫、標註、模板化支援、結構化抽取、運維
@@ -77,7 +77,7 @@ QA）。</li>
 <li><strong>Thinking 模型</strong>獎勵的是：在困難問題上花更多
 token、維持中間結構、探索替代路徑、提高最終正確率。</li>
 </ul>
-<p>這兩種行為互相拉扯。<strong>若合併資料沒有精心設計，結果通常是兩邊都變得中庸</strong>：thinking
+<p>這兩種行為互相拉扯。<mark><strong>若合併資料沒有精心設計，結果通常是兩邊都變得中庸</strong></mark>：thinking
 變得冗長雜訊化，instruct 變得不夠俐落、成本高。</p>
 <p>實務上，分離仍很有吸引力。Qwen3 之後的 2507 線推出獨立的 Instruct 與
 Thinking（30B /
@@ -96,7 +96,7 @@ Non‑Think」混合推理。</li>
 <p>關鍵問題是：<strong>合併是否自然</strong>。若只是把兩種人格硬塞進同一
 checkpoint，體驗仍不自然。真正成功的合併必須是「推理強度光譜」平滑連續，模型能表現多個
 effort 等級，最好還能自適應選擇。這是 GPT‑style effort control
-的方向：<strong>控制計算策略，而不是二元開關。</strong></p>
+的方向：<mark><strong>控制計算策略，而不是二元開關。</strong></mark></p>
 <hr />
 <h2 id="3-anthropic-的方向為什麼重要">3. Anthropic 的方向為什麼重要</h2>
 <p>Anthropic 對 Claude 3.7 / Claude 4 的公開敘事相當克制：整合
@@ -105,7 +105,7 @@ extended thinking 中可用工具</strong>。Claude 4 將 thinking 與 tool use
 交錯，並強調 coding、長任務、agent workflow。</p>
 <p>更長的 reasoning trace
 不代表更聰明。過度冗長的可見推理，反而是分配失衡的訊號。Anthropic
-傳遞的觀點是：<strong>思考必須由目標工作負載決定</strong>。</p>
+傳遞的觀點是：<mark><strong>思考必須由目標工作負載決定</strong></mark>。</p>
 <ul>
 <li>如果目標是 coding：thinking 應該幫助 codebase
 navigation、規劃、拆解、錯誤修復、工具協調。</li>
@@ -139,9 +139,9 @@ benchmark。Agentic
 <p>當目標從解 benchmark 轉到互動任務，RL 堆疊就變了。傳統 reasoning RL
 的 infra 不夠用。Agentic RL 的 policy 嵌在更大的 harness
 中：<strong>工具伺服器、瀏覽器、終端、搜尋、模擬器、執行沙盒、API
-層、記憶系統、編排框架</strong>。環境不再只是
-verifier，而是訓練系統的一部分。</p>
-<p>這帶來新的系統需求：<strong>訓練與推理要更清楚地解耦</strong>。否則
+層、記憶系統、編排框架</strong>。<mark>環境不再只是
+verifier，而是訓練系統的一部分。</mark></p>
+<p>這帶來新的系統需求：<mark><strong>訓練與推理要更清楚地解耦</strong></mark>。否則
 rollout 吞吐量會崩潰。想像一個 coding agent
 必須執行程式並等待測試回饋：推理端被卡住，訓練端等不到完整軌跡，整體 GPU
 利用率遠低於傳統 reasoning
@@ -168,26 +168,42 @@ log、或找到「捷徑」讓任務失效</li>
 <p>這讓 agent 時代比 reasoning
 時代更脆弱。工具越強大，攻擊面越大。未來的研究瓶頸將來自：<strong>環境設計、評估器魯棒性、反作弊協議、以及
 policy 與世界的介面設計</strong>。</p>
-<p>但方向很清楚：<strong>具工具能力的思考比孤立思考更有用，且更能提升真實生產力。</strong></p>
+<p>但方向很清楚：<mark><strong>具工具能力的思考比孤立思考更有用，且更能提升真實生產力。</strong></mark></p>
 <p>Agentic 思維也意味著 <strong>harness
 engineering</strong>：核心智慧越來越多來自「多代理如何組織」——一個
 orchestrator
 負責規劃與路由、專家代理處理領域任務、子代理負責更窄的執行與 context
 隔離。未來是 <strong>訓練模型 → 訓練代理 → 訓練系統</strong>。</p>
 <hr />
+<h2 id="二次分析註記">🔎 二次分析註記</h2>
+<blockquote class="callout callout-note">
+<p><span class="callout-title">分析 1｜核心位移</span><br /><mark>這篇文真正的主張不是「讓模型更會想」，而是「讓模型能把想法轉成可持續行動」。</mark></p>
+</blockquote>
+<blockquote class="callout callout-tip">
+<p><span class="callout-title">分析 2｜架構重點</span><br />從工程角度看，關鍵資產已經從單一模型權重，轉移到「<strong>模型 × 環境 × 工具 × 評估器</strong>」整體系統。</p>
+</blockquote>
+<blockquote class="callout callout-note">
+<p><span class="callout-title">分析 3｜產品含義</span><br />對企業導入而言，最有價值的不是更長的思維輸出，而是更高的任務完成率、可回復性與可審計性。</p>
+</blockquote>
+<blockquote class="callout callout-warning">
+<p><span class="callout-title">分析 4｜風險焦點</span><br /><strong>Reward hacking</strong> 在 agent 場景會被放大，<mark>測試環境與反作弊設計</mark>將和模型能力同等重要。</p>
+</blockquote>
+
 <h2 id="結論">結論</h2>
+<section class="conclusion-box">
 <p>第一階段的 reasoning 浪潮證明了：在可靠回饋訊號與足夠 infra
-下，<strong>RL 能顯著提升模型認知能力</strong>。</p>
-<p>更深的轉變則是：<strong>從 reasoning 思維 → agentic
-思維</strong>。訓練的核心對象不再是單一模型，而是「模型 +
+下，<mark><strong>RL 能顯著提升模型認知能力</strong></mark>。</p>
+<p>更深的轉變則是：<mark><strong>從 reasoning 思維 → agentic
+思維</strong></mark>。訓練的核心對象不再是單一模型，而是「模型 +
 環境」的系統，也就是 <strong>agent 與其
 harness</strong>。這改變了研究中最重要的工件：除了模型架構與訓練資料，還包含<strong>環境設計、rollout
 infra、評估器魯棒性、多代理協調介面</strong>。</p>
-<p>它也改變了「好思考」的定義：<strong>最有價值的思考，是能在真實世界限制下維持行動的思考，而不是最長或最華麗的推理痕跡。</strong></p>
+<p>它也改變了「好思考」的定義：<mark><strong>最有價值的思考，是能在真實世界限制下維持行動的思考，而不是最長或最華麗的推理痕跡。</strong></mark></p>
 <p>競爭優勢也將轉移：在 reasoning 時代，優勢來自更好的 RL
 演算法、更強的回饋訊號、更可擴展的訓練 pipeline；在 agentic
 時代，優勢會來自<strong>更好的環境、更緊密的 train‑serve 整合、更強的
 harness engineering、以及更快速閉環的決策回饋</strong>。</p>
+</section>
 <hr />
 <h2 id="-核心概念與關鍵字彙總">📌 核心概念與關鍵字彙總</h2>
 <table>
